@@ -1,0 +1,322 @@
+@import url(../reindeer/legacy-styles.css);
+
+.v-app {
+	background: white;
+}
+
+.v-caption-applicationTitle {
+    font-weight: bold;
+    font-size: 22px;
+    text-align: center;
+}
+
+/* Appliakasjons-tittel i trekkspill-layout */
+.v-label-applicationTitle {
+    font-weight: bold;
+    font-size: 26px;
+    text-align: left;
+    line-height: 29px;
+}
+
+.v-horizontallayout-topPanel {
+    background-image: url(images/background-light.png);
+    border-radius: 5px;
+}
+
+.v-verticallayout-applicationHeader .v-verticallayout-margin {
+	padding-top:4px;
+	padding-bottom:2px;
+	padding-left:4px;
+	padding-right:4px;
+}
+
+.v-orderedlayout-margin-left, .v-horizontallayout-margin-left, .v-verticallayout-margin-left, .v-layout.v-margin-left {padding-left: 7px;}
+.v-orderedlayout-margin-bottom, .v-horizontallayout-margin-bottom, .v-verticallayout-margin-bottom, .v-layout.v-margin-bottom {padding-bottom: 7px;}
+.v-orderedlayout-margin-right, .v-horizontallayout-margin-right, .v-verticallayout-margin-right, .v-layout.v-margin-right {padding-right: 7px;}
+.v-orderedlayout-margin-top, .v-horizontallayout-margin-top, .v-verticallayout-margin-top, .v-layout.v-margin-top {padding-top: 7px;}
+
+.v-tabSheet-tabSheetLayout {
+    background-image: url(images/background-light.png);
+    border-radius: 5px;
+}
+
+.v-horizontallayout-singlePageLayout {
+    background-image: url(images/background-light.png);
+    border-radius: 5px;
+}
+
+.v-tabsheet-tabsheetpanel {
+    background: none repeat scroll 0 0 #EFEFEF;
+}
+
+.v-horizontallayout-virtualPageLayout {
+    background-image: url(images/background-light.png);
+    border-radius: 5px;
+}
+
+.gwt-viz-container {
+    height: 100%;
+}
+
+/* tabellceller for status-indikatorer */
+.v-table-cell-content-statusIndicator-SUCCESS {
+	color: black !important;
+	background: lime !important; /* for IE8, som ikke skjønner rgba */
+	background: rgba(0,255,0, 0.3) !important;
+}
+.v-table-cell-content-statusIndicator-WARNING {
+    color: black !important;
+    background: yellow !important; /* for IE8, som ikke skjønner rgba */
+    background: rgba(255,255,0, 0.2) !important;
+}
+.v-table-cell-content-statusIndicator-FAILURE {
+    color: black !important;
+    background: red !important; /* for IE8, som ikke skjønner rgba */
+    background: rgba(255,0,0, 0.3) !important;
+}
+/*
+.v-table-focus .v-table-cell-wrapper {
+	white-space: normal;
+}
+
+.v-table-cell-wrapper-statusLogEntries {
+	white-space: normal;
+}
+*/
+.v-table-cell-content{
+	vertical-align: top;
+}
+
+/*størrelse på datofelt*/
+
+.v-textfield-statusMaxRows {
+	width: 3em;
+}
+
+.v-caption-statusLogEntry-message {
+	white-space: normal;
+}
+
+.v-panel-content {
+        border: 1px solid #babfc0;
+        border-bottom: 1px solid #dee2e3;
+}
+
+.v-verticallayout-borderLeftRightBottomTop {
+	border-color:#C2C3C4;
+	border-left-style:solid;
+	border-right-style:solid;
+	border-bottom-style:solid;
+	border-top-style:solid;
+	border-width:1px;
+}
+
+.v-verticallayout-borderLeftRightBottom {
+	border-color:#C2C3C4;
+	border-left-style:solid;
+	border-right-style:solid;
+	border-bottom-style:solid;
+	border-width:1px;
+}
+
+.v-verticallayout-borderLeftRight {
+	border-color:#C2C3C4;
+	border-left-style:solid;
+	border-right-style:solid;
+	border-width:1px;
+}
+
+.v-horizontallayout-borderRight {
+	border-color:#C2C3C4;
+	border-right-style:solid;
+	border-width:1px;
+}
+
+.v-verticallayout-borderRight {
+	border-color:#C2C3C4;
+	border-right-style:solid;
+	border-width:1px;
+}
+
+.v-verticallayout-borderBottomTop {
+	border-color:#C2C3C4;
+	border-top-style:solid;
+	border-bottom-style:solid;
+	border-width:1px;
+}
+
+.v-verticallayout-borderBottom {
+	border-color:#C2C3C4;
+	border-bottom-style:solid;
+	border-width:1px;
+}
+
+.v-verticallayout-borderTop {
+	border-color:#C2C3C4;
+	border-top-style:solid;
+	border-width:1px;
+}
+
+.v-horizontallayout-borderTop {
+	border-color:#C2C3C4;
+	border-top-style:solid;
+	border-width:1px;
+}
+
+.v-verticallayout-accordionlayout-menubar {
+	background: 	white;
+	border-width: 	3px;
+}
+
+/* bakgrunnsfarge for applikasjons-delen (høyre-siden) av trekkspill-layout */
+.v-horizontallayout-accordionLayout {
+	background-color: #DFDFDF;
+}
+
+.v-verticallayout-rightPanel {
+	background-color: #DFDFDF;
+}
+
+/* trekkspill-meny */
+.v-accordion-item-caption .v-caption {
+	background-color: white;
+}
+
+.v-button-logout {
+}
+
+/* smalere splitpaneler for å binde komponentene mer sammen */
+.v-splitpanel-hsplitter, .v-splitpanel-hsplitter-locked  {
+    width: 2px;
+    background: white;
+}
+
+/* grå bakgrunn på tekstfelt som ikke kan endres, brukes av grt og mes prosjektene */
+.v-textfield-readonly, .v-textarea-readonly, .v-filterselect.v-readonly {
+	border: 1px solid #b6b6b6 !important;
+	border-radius: 4px 4px 4px 4px;
+/*	border-top-color: #9d9d9d !important;
+	border-bottom-color: #d6d6d6 !important;
+	border-right-color: #d6d6d6 !important;*/
+}
+
+/* gjennomsiktig bakgrunn på tekstfelt når feltet er readonly */
+input.v-textfield-readonly:focus, textarea.v-textarea-readonly:focus {
+    background-color: transparent;
+}
+
+/*Margin alignment for signal grid, brukes av grt og mes prosjektene */
+.v-caption-signalEventfilter-unitOfMeasureGrid{
+	margin-left: 11px;
+	margin-bottom: 2px !important;
+}
+
+.v-label-dashboardTitle {
+    font-weight: bold;
+    font-size: 26px;
+    color: #44698B;
+    text-align: center;
+    line-height: 29px;
+}
+
+.v-caption-notificationPanel {
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    line-height: 21px;
+    white-space: normal;
+}
+
+.v-horizontallayout-notificationPanel {
+	background-color: #FF3333;
+}
+
+
+/* TODO: Move this into css file below vaadin-transport-impl. Need to figure out how to handle multiple css files first. */
+.v-label-freighterName {
+    font-size: 16px;
+    font-weight: bold;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.v-label-infoLabel {
+    font-weight: bold;
+    text-indent: 10px;
+}
+
+.v-checkbox-centered {
+    text-align: center;
+}
+
+.breadcrumbs {
+	background: #F0F0F0;
+	width: 100%;
+	height: 15px;
+}
+
+.breadcrumbs .v-button-link:HOVER .v-button-caption {
+	color: #0A8ECC;
+	text-decoration: none;
+}
+
+.breadcrumbs .v-button-link .v-button-caption {
+	border-right: none;
+	background: url(images/separator.gif) no-repeat right center;
+	padding-right: 15px;
+	padding-left: 10px;
+	vertical-align: middle;
+	color: #333333;
+	text-decoration: none;
+}
+
+.breadcrumbs .v-button-SELECTED .v-button-caption {
+	color: #333333;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.v-label-progressBarLabel {
+	width: 100%;
+	height: 100%;
+}
+
+.v-label-reportName {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Filter panel */
+.v-panel-filterPanel .v-panel-content {
+	background: none;
+	border: none;
+}
+.v-panel-filterPanel .v-panel-deco {
+	height: 0px;
+	border: none;
+}
+.v-panel-filterPanel .v-panel-nocaption {
+	border: none;
+}
+.v-textfield-maxRowsTextField {
+	width: 4em;
+}
+
+.v-richtextarea-readonly {
+	overflow: auto !important;
+}
+
+.v-richtextarea .v-readonly {
+	overflow: auto !important;
+}
+
+.admin .v-richtextarea .v-readonly {
+	overflow: auto !important;
+}
+
+.admin .ok{
+	color: green !important;
+}
+.admin .notOk{
+	color: red !important;
+}

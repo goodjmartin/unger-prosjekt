@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	                       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:property-placeholder ignore-unresolvable="true" ignore-resource-not-found="true" system-properties-mode="OVERRIDE"
+								  location="classpath:/vaadin-security-default.properties"
+								  file-encoding="UTF-8"/>
+
+	<!-- Create authenticator -->
+	<bean id="authentication" class="no.goodtech.vaadin.security.SpringSecurityAuthentication"/>
+	<!--<bean id="authentication" class="no.goodtech.vaadin.security.tabs.user.LoginViewAuthentication"/>-->
+
+	<bean id="accessRoleRepository" class="no.goodtech.vaadin.security.model.AccessRoleRepository"/>
+	<bean id="userRepository" class="no.goodtech.vaadin.security.model.UserRepository"/>
+	<bean id="personnelClassRepositoryImpl" class="no.goodtech.vaadin.security.model.PersonnelClassRepositoryImpl"/>
+
+	<bean id="selfRegistration" class="no.goodtech.vaadin.security.SelfRegistration">
+		<constructor-arg name="roleId" value="${security.selfRegistrationRoleId}"/>
+	</bean>
+
+	<bean id="forgotPasswordService" class="no.goodtech.vaadin.security.ForgotPasswordService" autowire="constructor">
+		<constructor-arg name="disabled" value="${security.forgotPasswordService.disabled}"/>
+		<constructor-arg name="smtpHost" value="${mail.smtp.host}"/>
+		<constructor-arg name="from" value="${mail.from}"/>
+	</bean>
+
+	<!-- Initiate the Globals bean -->
+	<bean id="vaadinSecurityGlobals" class="no.goodtech.vaadin.security.Globals">
+		<!--<constructor-arg name="authentication" ref="authentication"/>-->
+		<constructor-arg name="forgotPasswordService" ref="forgotPasswordService"/>
+		<constructor-arg name="primaryTheme" value="${primaryTheme}"/>
+		<constructor-arg name="secondaryTheme" value="${secondaryTheme}"/>
+		<constructor-arg name="requireLogin" value="${security.requireLogin}"/>
+		<constructor-arg name="requireMenuTranslation" value="${menu.requireTranslation}"/>
+		<constructor-arg name="appURL" value="${security.url.main}"/>
+		<constructor-arg name="loginURL" value="${security.url.login}"/>
+		<constructor-arg name="loginProcessingURL" value="${security.url.login-processing}"/>
+		<constructor-arg name="logoutURL" value="${security.url.logout}"/>
+		<constructor-arg name="passwordEncoder" ref="passwordEncoder"/>
+	</bean>
+
+</beans>

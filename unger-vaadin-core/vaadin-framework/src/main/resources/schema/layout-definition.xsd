@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:goodtech:xml:ns:layoutDefinition"
+           xmlns="urn:goodtech:xml:ns:layoutDefinition"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="layout-definition">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element name="menu" type="menuType" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="viewsType">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:sequence>
+				<xs:element name="view" type="viewType"/>
+			</xs:sequence>
+        </xs:sequence>
+		<xs:attribute name="defaultViewId" type="xs:string" use="required"/>
+    </xs:complexType>
+
+	<xs:complexType name="viewType">
+		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="class" type="xs:string"/>
+	</xs:complexType>
+
+	<xs:complexType name="groupType">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:choice>
+				<xs:element name="menuItem" type="MenuItemType"/>
+                <xs:element name="group" type="groupType"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="icon" type="xs:string" use="optional"/>
+		<xs:attribute name="expand" type="xs:boolean" use="optional" default="false"/>
+    </xs:complexType>
+
+	<xs:complexType name="menuType">
+		<xs:sequence minOccurs="1" maxOccurs="unbounded">
+			<xs:choice>
+				<xs:element name="menuItem" type="MenuItemType"/>
+				<xs:element name="group" type="groupType"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="defaultViewId" type="xs:string" use="required"/>
+	</xs:complexType>
+
+    <xs:complexType name="MenuItemType">
+        <xs:attribute name="viewId" type="xs:string" use="required"/>
+		<xs:attribute name="index" type="xs:string" use="optional"/>
+        <xs:attribute name="name" type="xs:string" use="optional"/>
+        <xs:attribute name="icon" type="xs:string" use="optional"/>
+		<xs:attribute name="parameters" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+</xs:schema>

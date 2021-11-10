@@ -1,0 +1,55 @@
+.v-app,
+.v-touchkit-navpanel-container,
+.v-touchkit-offlinemode {
+background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f9f9f6), to(#ebebe8)) !important;
+}
+
+.v-touchkit-verticalcomponentgroup {
+border-radius: 0;
+box-shadow: 0 1px rgba(0,0,0,0.1);
+border: 1px solid #dadada;
+border-bottom-color: #c2c2c2;
+}
+
+.v-has-width {
+font-size: 19px !important;
+color: #797879 !important;
+font-weight: normal;
+text-shadow: none;
+white-space: nowrap;
+overflow-x: hidden;
+text-overflow: ellipsis;
+}
+
+
+/* TODO: Disse bør flyttes til fjernkontroll-prosjektet */
+.v-remotecontrol-field {
+	text-align: right !important; 
+}
+.v-textfield {
+	text-align: right !important; 
+} 
+.v-label-columnHeader {
+	text-align: right !important;
+}
+
+.v-button-removeButton {
+	color: red;
+}
+.v-button-okButton, 
+.v-button-addButton, 
+.v-button-activeButton,
+.v-button-refreshButton {
+	color: green;
+}
+.v-button-cancelButton,
+.v-button-resetButton, 
+.v-button-saveButton,
+.v-button-downloadButton,
+.v-button-backButton {
+	color: blue;
+}
+.v-button-copyButton,
+.v-button-editButton {
+	color: yellow;
+}

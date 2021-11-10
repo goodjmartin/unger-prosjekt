@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:goodtech:xml:ns:report"
+           xmlns="urn:goodtech:xml:ns:report"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="reports">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="report" type="reportType" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="reportType">
+        <xs:sequence>
+            <xs:element name="columns" type="columnsType" minOccurs="0" maxOccurs="1" />
+            <xs:element name="dataSetFetcher" type="dataSetFetcherType"/>
+            <xs:element name="excelExporter" type="excelExporterType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="jasperExporter" type="jasperExporterType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="timeLineExporter" type="timeLineExporterType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="chart" type="chartType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="csvExporter" type="csvExporterType" minOccurs="0" maxOccurs="1"/>
+            <xs:element name="drillDown" type="drillDownType" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="description" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="columnsType">
+        <xs:sequence>
+            <xs:element name="column" type="columnType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute type="xs:boolean" name="sortDisabled" default="false"/>
+    </xs:complexType>
+
+    <!-- Use this to make drilldown reports with charts.
+     url: specify where you want to navigate. The selected values are given as #0, #1 and #2, which represents
+      the three parameters from the query.
+       Example url: ReportTab/menu=true/report=finishedGoodsRejected/fromTime=#0/toTime=+1M@#0/equipmentId=#1-->
+    <xs:complexType name="drillDownType">
+        <xs:sequence>
+            <xs:element name="url" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="filterParameter" type="filterParameterType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Used for sending filter component values to the url. urlParameterId is the parameter added in the url.
+    filterParameterName is the name of the filter component, if not set, this is the same as urlParameterId. -->
+    <xs:complexType name="filterParameterType">
+        <xs:attribute name="urlParameterId" use="required"/>
+        <xs:attribute name="filterParameterName" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="dataSetFetcherType">
+        <xs:sequence>
+            <xs:element name="query" type="xs:string" minOccurs="1" maxOccurs="1"/>
+            <xs:element name="parameters" type="parametersType" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="type" type="xs:string" use="required"/>
+        <xs:attribute name="showRowCount" type="xs:boolean" default="true"/>
+        <xs:attribute name="dataSource" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="parametersType">
+        <xs:sequence>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="textFieldParameter" type="textFieldParameterType"/>
+                <xs:element name="dateParameter" type="dateParameterType"/>
+                <xs:element name="nativeSelectParameter" type="nativeSelectParameterType"/>
+                <xs:element name="sqlSelectParameter" type="sqlSelectParameterType"/>
+                <xs:element name="weekNumberParameter" type="weekNumberType"/>
+                <xs:element name="currentUsernameParameter" type="currentUsernameParameterType"/>
+            </xs:choice>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="textFieldParameterType">
+        <xs:attribute name="name" type="xs:string" use="optional"/>
+        <xs:attribute name="label" type="xs:string"/>
+		<xs:attribute name="wideSearch" type="xs:boolean" default="false"/>
+    </xs:complexType>
+
+    <xs:complexType name="dateParameterType">
+        <xs:attribute name="name" type="xs:string" use="optional"/>
+        <xs:attribute name="label" type="xs:string"/>
+        <xs:attribute name="format" type="xs:string" default="yyyy-MM-dd"/>
+        <xs:attribute name="offsetInMinutes" type="xs:int" default="0"/>
+        <xs:attribute name="time" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="weekNumberType">
+        <xs:attribute name="name" type="xs:string" use="optional"/>
+        <xs:attribute name="yearLabel" type="xs:string"/>
+        <xs:attribute name="weekLabel" type="xs:string"/>
+        <xs:attribute name="weekOffset" type="xs:int" default="0"/>
+        <xs:attribute name="numberOfYears" type="xs:int" default="30"/>
+        <xs:attribute name="hourOfDay" type="xs:int" default="0"/>
+    </xs:complexType>
+
+    <xs:complexType name="nativeSelectParameterType">
+        <xs:sequence>
+            <xs:element name="list" type="listType"/>
+        </xs:sequence>
+        <xs:attribute name="name" type="xs:string" use="optional"/>
+        <xs:attribute name="label" type="xs:string"/>
+        <xs:attribute name="dataSource" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+	<!-- en nedtrekksliste hvor innholdet viser resultatet av en sql -->
+    <xs:complexType name="sqlSelectParameterType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+		        <xs:attribute name="name" type="xs:string" use="optional"/>
+                <xs:attribute name="label" type="xs:string"/>
+                <xs:attribute name="mode" type="modeType"/>
+                <!-- Dependency to another IReportParameter's name. This will generate a valueChangeListener for the
+                dependency parameter. Each time the valueChangeListener is triggered, a new query is performed with
+                a sql parameter (the name of the dependency) for this sqlSelect. -->
+                <xs:attribute name="dependency" type="xs:string" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+    <xs:complexType name="currentUsernameParameterType">
+        <xs:attribute name="name" type="xs:string" use="optional"/>
+        <xs:attribute name="label" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:simpleType name="modeType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="SingleColumnSelect"/>
+            <xs:enumeration value="TwinColumnSelect"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="listType">
+        <xs:sequence>
+            <xs:element name="element" type="elementType" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="elementType">
+        <xs:attribute name="key" type="xs:string" use="required"/>
+        <xs:attribute name="value" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="excelExporterType">
+        <xs:attribute name="displayTotals" type="xs:boolean" default="false" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="jasperExporterType">
+        <xs:attribute name="file" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="csvExporterType">
+        <xs:attribute name="mimeType" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="timeLineExporterType">
+        <xs:sequence>
+            <xs:element name="zoomFactor" type="zoomFactorType" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="seriesList" type="seriesListType" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="chartType">
+        <!--Tittel på graf -->
+        <xs:attribute name="chartTitle" type="xs:string" use="optional"/>
+        <!--Tittel på X-akse -->
+        <xs:attribute name="xAxisTitle" type="xs:string" use="optional"/>
+        <!--Tittel på Y-akse -->
+        <xs:attribute name="yAxisTitle" type="xs:string" use="optional"/>
+
+		<!-- Chart type. Defaults to bar. See com.vaadin.addon.charts.model.ChartType for available types -->
+        <xs:attribute name="type" type="xs:string" use="optional"/>
+
+		<!-- X axis type. Defaults to category. See com.vaadin.addon.charts.model.AxisType for available types -->
+        <xs:attribute name="axisType" type="xs:string" use="optional"/>
+
+        <!--top, bottom, right, left-->
+        <xs:attribute name="alignTable" type="alignComponent" use="optional" default="top"/>
+
+        <!--generate crosstab. Need 3 columns (1. column = series, 2. column = category, 3. column = value-->
+        <xs:attribute name="useCrossTab" type="xs:boolean" use="optional" default="false"/>
+        
+        <!-- Use this to show tooltip when user points on a value. See AbstractPlotOptions.enableMouseTracking() 
+        defaults to false for time series charts and true for other charts -->
+        <xs:attribute name="showTooltip" type="xs:boolean" use="optional" />
+        
+        <!-- Set this to false to hide export link in upper right corner. Exporting depends on external exporting service -->
+        <xs:attribute name="exporting" type="xs:boolean" use="optional" default="true" />
+
+        <!-- Bar, column and area charts supports stacking. In current version of Vaadin this can be "normal" or "percent" -->
+        <xs:attribute name="stacking" type="xs:string" use="optional" default="none" />
+    </xs:complexType>
+
+    <xs:simpleType name="alignComponent">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="top"/>
+            <xs:enumeration value="bottom"/>
+            <xs:enumeration value="left"/>
+            <xs:enumeration value="right"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="seriesListType">
+        <xs:sequence>
+            <xs:element name="series" type="seriesType" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="seriesType">
+        <xs:attribute name="color" type="xs:string" use="required"/>
+        <xs:attribute name="unit" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <xs:complexType name="zoomFactorType">
+        <xs:attribute name="legend" type="xs:string" use="required"/>
+        <xs:attribute name="timeInterval" type="xs:long" use="required"/>
+        <xs:attribute name="unit" type="unitType" use="required"/>
+    </xs:complexType>
+
+    <xs:simpleType name="unitType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="millisecond"/>
+            <xs:enumeration value="second"/>
+            <xs:enumeration value="minute"/>
+            <xs:enumeration value="hour"/>
+            <xs:enumeration value="day"/>
+            <xs:enumeration value="week"/>
+            <xs:enumeration value="month"/>
+            <xs:enumeration value="year"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="columnType">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="type" type="typeType" use="optional"/>
+        <xs:attribute name="format" type="xs:string" use="optional"/>
+        <xs:attribute name="alignment" type="alignmentType" use="optional"/>
+        <xs:attribute name="summaryText" type="xs:string" use="optional"/>
+        <xs:attribute name="summaryMethod" type="summaryMethod" use="optional"/>
+    </xs:complexType>
+
+    <xs:simpleType name="typeType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="java.lang.Boolean"/>
+            <xs:enumeration value="java.lang.Byte"/>
+            <xs:enumeration value="java.lang.Short"/>
+            <xs:enumeration value="java.lang.Integer"/>
+            <xs:enumeration value="java.lang.Long"/>
+            <xs:enumeration value="java.lang.Number"/>
+            <xs:enumeration value="java.lang.Float"/>
+            <xs:enumeration value="java.lang.Double"/>
+            <xs:enumeration value="java.lang.String"/>
+            <xs:enumeration value="java.util.Date"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="alignmentType">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="Left"/>
+            <xs:enumeration value="Right"/>
+            <xs:enumeration value="Center"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="summaryMethod">
+        <xs:restriction base="xs:token">
+            <xs:enumeration value="sum"/>
+            <xs:enumeration value="avg"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>

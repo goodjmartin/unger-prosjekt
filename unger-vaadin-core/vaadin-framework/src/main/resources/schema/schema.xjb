@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jaxb:bindings
+        version="1.0"
+        xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd">
+
+    <jaxb:bindings schemaLocation="tabSheetLayout.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="no.goodtech.vaadin.tabSheetLayout"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="topMenuLayout.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="no.goodtech.vaadin.topMenuLayout"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+
+    <jaxb:bindings schemaLocation="layout-definition.xsd" node="/xs:schema">
+        <jaxb:schemaBindings>
+            <jaxb:package name="no.goodtech.vaadin.layoutDefinition"/>
+        </jaxb:schemaBindings>
+    </jaxb:bindings>
+    
+</jaxb:bindings>

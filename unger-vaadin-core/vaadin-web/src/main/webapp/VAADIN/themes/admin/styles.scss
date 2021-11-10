@@ -1,0 +1,13 @@
+
+@import "addons.scss";
+@import "admin.scss";
+
+
+// Override with an empty implementation, which removes the default responsive behavior
+//@mixin valo-menu-responsive {
+//}
+
+.admin {
+	@include addons;
+	@include admin;
+}

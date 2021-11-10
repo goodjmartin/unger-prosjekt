@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:goodtech:xml:ns:tabSheetLayout"
+           xmlns="urn:goodtech:xml:ns:tabSheetLayout"
+           attributeFormDefault="unqualified"
+           elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="tabSheetLayout">
+        <xs:complexType>
+            <xs:sequence>
+				<xs:element name="panelGroups" type="PanelGroupsType"/>
+            </xs:sequence>
+        </xs:complexType>
+
+    </xs:element>
+
+	<xs:complexType name="PanelGroupsType">
+		<xs:sequence>
+			<xs:element name="panelGroup" type="PanelGroupType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="PanelGroupType">
+		<xs:sequence>
+			<xs:element name="panel" type="PanelType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+
+	<xs:complexType name="PanelType">
+		<xs:attribute name="class" type="xs:string" use="required"/>
+	</xs:complexType>
+
+</xs:schema>

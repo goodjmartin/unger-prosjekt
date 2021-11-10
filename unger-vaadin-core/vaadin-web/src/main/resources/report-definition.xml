@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<reports xmlns="urn:goodtech:xml:ns:report">
+
+	<report id="queueReport" name="Kø-elementer" description="Rapport som viser 20 siste kø-elementer">
+		<columns sortDisabled="false">
+			<column name="Opprettet" />
+			<column name="Kø" />
+			<column name="Status" />
+		</columns>
+		<dataSetFetcher type="sql" showRowCount="false" dataSource="mes">
+			<query>
+				select top 30 enqueued, queueName, status from QueueElement
+				where queueName = :queue 
+				and status like :status
+				and enqueued between :fromDate and :toDate
+				order by pk desc
+            </query>
+            <parameters>
+				<sqlSelectParameter label="Kø" name="queue">
+					select distinct queueName from QueueElement order by queueName
+				</sqlSelectParameter>
+                <nativeSelectParameter label="Status" name="status">
+                    <list>
+                        <element key="" value="%"/>
+                        <element key="UNREAD" value="Ulest"/>
+                        <element key="FAILED" value="Feil"/>
+                        <element key="FAILED_BUT_SIGNED" value="Feil, men kvittert ut"/>
+                        <element key="OK" value="Ok"/>
+                    </list>
+                </nativeSelectParameter>
+                <dateParameter label="Fra og med dato" format="yyyy-MM-dd" name="fromDate" time="00"/>
+                <dateParameter label="Til og med dato" format="yyyy-MM-dd" name="toDate" time="23:59:59.999"/>
+            </parameters>
+		</dataSetFetcher>
+		<excelExporter displayTotals="false" />
+		<csvExporter mimeType="text/csv" />
+	</report>
+	<report id="accessRoles" name="Tilgangs-roller" description="Rapport som viser alle aksess-roller">
+		<columns sortDisabled="false">
+			<column name="Pk1" summaryMethod="sum" />
+			<column name="Pk2" summaryMethod="sum" />
+			<column name="Pk3" summaryMethod="avg" />
+			<column name="Id" summaryText="Statisk tekst"/>
+			<column name="Description" />
+		</columns>
+		<dataSetFetcher type="sql" showRowCount="false" dataSource="mes">
+			<query>
+					select (case when pk > 10 then NULL else pk end) as pk1 , pk as pk2, pk as pk3, id, description
+					from AccessRole
+					where (:freeText = '' or pk > 10)
+					order by pk
+			</query>
+			<parameters>
+				<textFieldParameter label="Skriv inn noe" name="freeText" wideSearch="false"/>
+			</parameters>
+		</dataSetFetcher>
+		<excelExporter displayTotals="false" />
+		<csvExporter mimeType="text/csv" />
+	</report>
+	<report id="myUser" name="Mine brukerdata" description="Rapport som viser brukerdata for innlogget bruker">
+		<columns sortDisabled="false">
+			<column name="Pk" />
+			<column name="Id" />
+			<column name="Name" />
+			<column name="Email" />
+		</columns>
+		<dataSetFetcher type="sql" showRowCount="false" dataSource="mes">
+			<query>select pk, id, name, email from Person where id = :currentUsername order by pk</query>
+            <parameters>
+            	<currentUsernameParameter label="Bukernavn" name="currentUsername"/>
+            </parameters>
+		</dataSetFetcher>
+		<excelExporter displayTotals="false" />
+		<csvExporter mimeType="text/csv" />
+	</report>
+	<report id="userSearch" name="Søk i brukerdatabase" description="Rapport som tilbyr oppslag i brukerdata">
+		<columns sortDisabled="false">
+			<column name="Pk" />
+			<column name="Id" />
+			<column name="Name" />
+			<column name="Email" />
+		</columns>
+		<dataSetFetcher type="sql" showRowCount="false" dataSource="mes">
+			<query>select pk, id, name, email from Person where id like :freeText or name like :freeText or email like :freeText order by pk</query>
+            <parameters>
+            	<textFieldParameter label="Fritekst-søk" name="freeText" wideSearch="true"/>
+            </parameters>
+		</dataSetFetcher>
+		<excelExporter displayTotals="false" />
+		<csvExporter mimeType="text/csv" />
+	</report>
+	<report id="userGraphical" name="Grafisk rapport over brukere" description="">
+		<dataSetFetcher type="sql" showRowCount="false" dataSource="mes" >
+			<query>
+				select '', id, pk
+				from Person order by pk
+			</query>
+		</dataSetFetcher>
+		<chart type="column" xAxisTitle="" yAxisTitle="" chartTitle="PK per bruker"  exporting="true"/>
+	</report>
+	<report id="userGraphicalTitle" name="Grafisk rapport over brukere med tittel som viser parameterverdier" description="Du kan vise verdien av parametre som er valgt i tittel på diagrammet">
+		<dataSetFetcher type="sql" showRowCount="false" dataSource="mes" >
+			<query>
+				select '', id, pk
+				from Person
+				where (id like :freeText or name like :freeText or email like :freeText)
+				and loginFailures >= :loginFailures  
+				order by pk
+			</query>
+            <parameters>
+            	<textFieldParameter label="Fritekst-søk" name="freeText" wideSearch="true"/>
+            	<nativeSelectParameter label="Antall mislykkede innlogginger" name="loginFailures" >
+            		<list>
+            			<element key="ikke valgt" value="0"/>
+            			<element key="1 eller flere" value="1"/>
+            			<element key="2 eller flere" value="2"/>
+            			<element key="3 eller flere" value="3"/>
+            		</list>
+            	</nativeSelectParameter>
+            </parameters>
+		</dataSetFetcher>
+		<chart type="column" xAxisTitle="" yAxisTitle="" chartTitle="PK per bruker som matcher ':freeText' og med :loginFailures mislykkede innlogginger "  exporting="true"/>
+	</report>
+    <report id="categories" name="Statuser/koder/kategorier" description="Liste over tillatte status- / årsakskoder / kategorier">
+        <columns>
+            <column name="Nr" type="java.lang.Integer"/>
+            <column name="ID"/>
+            <column name="Navn"/>
+            <column name="Beskrivelse"/>
+            <column name="Ikon"/>
+            <column name="Farge" type="java.lang.Integer"/>
+            <column name="Type"/>
+        </columns>
+        <dataSetFetcher type="sql" showRowCount="false" dataSource="mes">
+            <query>
+                select indexNo, id, name, description, iconName, color, owner 
+                from category 
+                where owner = '$$' 
+                order by owner, indexNo
+            </query>
+            <parameters>
+                <sqlSelectParameter label="Type">
+                	select distinct owner from category order by owner
+                </sqlSelectParameter>
+            </parameters>
+        </dataSetFetcher>
+        <excelExporter displayTotals="false"/>
+    </report>
+</reports>

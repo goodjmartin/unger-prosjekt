@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabSheetLayout xmlns="urn:goodtech:xml:ns:tabSheetLayout">
+
+	<panelGroups>
+		<panelGroup id="group1">
+			<panel class="no.goodtech.vaadin.test.dummy.DummyTab1"/>
+		</panelGroup>
+
+		<panelGroup id="group2">
+			<panel class="no.goodtech.vaadin.test.dummy.DummyTab2"/>
+		</panelGroup>
+
+		<panelGroup id="all">
+			<panel class="no.goodtech.vaadin.test.dummy.DummyTab1"/>
+			<panel class="no.goodtech.vaadin.test.dummy.DummyTab2"/>
+		</panelGroup>
+	</panelGroups>
+
+</tabSheetLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	                       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- Property configuration -->
+	<context:property-placeholder ignore-unresolvable="true" ignore-resource-not-found="true" file-encoding="UTF-8"/>
+
+	<bean id="log4jInitialization" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetClass" value="no.cronus.common.logging.Log4JInit" />
+		<property name="targetMethod" value="initLoggingCheckDirectories" />
+		<property name="arguments">
+			<list>
+				<value>/etc/goodtech/mes/</value>    <!--Folder som blir kontrollert etter current working directory-->
+				<value>log4j.properties</value>      <!--Navn på property eller xml fil-->
+				<value>360000</value>                 <!--Tiden mellom hver gang log4j.xml filen kontrolleres for endringer -->
+			</list>
+		</property>
+	</bean>
+
+	<!-- Vaadin Core Server components -->
+	<import resource="classpath*:/goodtech-server.xml"/>
+	
+	<!-- Hvis du vil teste innlogging, kan du ta med dummyUserCreator-bønna  -->
+	<!--<bean id="dummyUserCreator" class="no.goodtech.vaadin.security.DummyUserCreator" init-method="run"/>-->
+
+	<bean id="dashboardTestdataCreator" class="no.goodtech.vaadin.test.DashboardTestdataCreator" init-method="init"/>
+	<bean id="defaultTestDataCreator" class="no.goodtech.vaadin.test.DefaultTestDataCreator" init-method="init"/>
+
+</beans>

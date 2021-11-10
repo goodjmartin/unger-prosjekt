@@ -1,0 +1,146 @@
+@mixin vaadin-frontpage {
+
+  $dashboardPadding: round($v-unit-size / 1.5) !default;
+
+  .flexible-board-view.flexible-board-view {
+    padding: 10px;
+    overflow: visible;
+
+    .dashboard-panel-toolbar {
+      padding: 1px 0 1px round($v-unit-size / 1.8);
+      height: $v-unit-size + 2px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .dashboard-panels {
+      display: block;
+      height: 100%;
+
+      .caption-label{
+        cursor: pointer;
+      }
+
+      .card {
+        height: 100%;
+        overflow: hidden;
+        padding: $v-unit-size + 2px round($dashboardPadding / 2) 0;
+        position: relative;
+        .v-table, .v-table-table {
+          background: transparent;
+        }
+        .v-table-table {
+          @include box-shadow(none);
+        }
+
+        .v-table-cell-wrapper {
+          padding-left: round($dashboardPadding / 2);
+          padding-right: round($dashboardPadding / 2);
+        }
+
+        .v-table-cell-content {
+          border-color: first-color(valo-border($strength: 0.3));
+        }
+
+        .v-table-cell-content-rowheader {
+          color: valo-font-color($v-app-background-color, 0.4);
+
+          .v-table-cell-wrapper {
+            padding-right: 0;
+          }
+        }
+      }
+
+      .labWrapper {
+        width: 100% !important;
+        .card {
+          padding: $v-unit-size + 2px 0 0;
+        }
+        .v-table-resizer {
+          display: none;
+        }
+      }
+
+      .dashboard-panel-slot {
+        padding: round($dashboardPadding / 3);
+      }
+
+      &[width-range~="0-700px"] {
+        .dashboard-panel-slot {
+          width: 100% !important;
+        }
+      }
+
+      &[width-range~="701px-"] {
+        .dashboard-panel-slot {
+          width: 50% !important;
+        }
+
+        .labWrapper {
+          width: 100% !important;
+        }
+      }
+
+      &[height-range~="0-440px"] {
+        .dashboard-panel-slot {
+          height: 100%;
+        }
+      }
+
+      &[height-range~="441px-"] {
+        .dashboard-panel-slot {
+          height: 50%;
+        }
+        .labWrapper {
+          height: 33%;
+        }
+      }
+
+      .dashboard-panel-slot.max {
+        width: 100% !important;
+        height: 100%;
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  .flexible-board-view {
+    @include width-range($max: 480px) {
+      padding-left: round($dashboardPadding / 2);
+      padding-right: round($dashboardPadding / 2);
+    }
+  }
+
+  $frontCardSize: 450px;
+
+  .front-page-card {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    width: $frontCardSize !important;
+    height: $frontCardSize !important;
+  }
+
+  .front-page-card.max {
+    margin: 0;
+    width: 100% !important;
+    height: 100%;
+  }
+
+  .front-page-card-add-button {
+    width: $frontCardSize !important;
+    height: $frontCardSize !important;
+    color: #197de1;
+    background-color: white;
+    -webkit-transition-duration: 0.3s; /* Safari */
+    transition-duration: 0.3s;
+    border: 1px solid #9ca5af;
+  }
+
+  .front-page-card-add-button:hover {
+    color: #ef6821;
+    background-color: #f3f3f3;
+  }
+
+}

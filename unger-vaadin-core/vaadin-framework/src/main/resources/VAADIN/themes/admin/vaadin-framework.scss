@@ -1,0 +1,242 @@
+// Global variable overrides. Must be declared before importing Valo.
+
+// Defines the plaintext font size, weight and family. Font size affects general component sizing.
+$v-font-size: 13px;
+$v-font-weight: 400;
+$v-table-header-font-size: 13px;
+$v-caption-font-size: 13px;
+
+//Teksten som vises når siden laster
+$v-app-loading-text: "Loading";
+
+//The color of the main loading indicator bar.
+$v-loading-indicator-color: #ED6321;
+
+//$v-font-family: "Open Sans", sans-serif;
+
+// Defines the border used by all components.
+//$v-border: 1px solid (v-shade 0.7);
+//$v-border-radius: 4px;
+
+// Affects the color of some component elements, e.g Button, Panel title, etc
+//$v-background-color: hsl(210, 0%, 98%);
+// Affects the color of content areas, e.g  Panel and Window content, TextField input etc
+//$v-app-background-color: $v-background-color;
+
+// Affects the visual appearance of all components
+//$v-gradient: v-linear 8%;
+//$v-bevel-depth: 30%;
+//$v-shadow-opacity: 5%;
+
+// Defines colors for indicating status (focus, success, failure)
+//$v-focus-color: valo-focus-color(); // Calculates a suitable color automatically
+//$v-friendly-color: #2c9720;
+//$v-error-indicator-color: #ed473b;
+
+// For more information, see: https://vaadin.com/book/-/page/themes.valo.html
+// Example variants can be copy/pasted from https://vaadin.com/wiki/-/wiki/Main/Valo+Examples
+
+// Slight adjustment to menu background-color
+$valo-menu-background-color: #414B56;
+
+@import "login.scss";
+
+@mixin vaadin-framework {
+	@include valo;
+	@include dashboard-login-view;
+
+	/*Specify white background color for table(defaults to grey otherwise) */
+	.v-table-body {
+		background-color: white;
+	}
+
+	//White text for all links in a selected row in a table
+	.v-table >* .v-selected >* .v-link, .v-popupview {
+		color: white;
+	}
+	.v-table >* .v-selected >* .v-popupview {
+		color: white;
+	}
+
+	.v-caption {
+		border-bottom: none;
+	}
+
+	//Needed to make the lighttoppanel share a background(flag label overflows otherwise)
+	.v-slot-lightTopPanel {
+		border-bottom: 7px;
+		border-bottom-color: #CADDEB;
+		border-bottom-style: solid;
+		background-color: #CADDEB;
+	}
+
+	//Needed to make the lighttoppanel share a background(flag label overflows otherwise)
+	.lightTopPanel, .lightTopPanel .v-horizontallayout {
+		background-color: #CADDEB;
+	}
+
+	/*********Kopiert fra vaadin-core nedenfor************************************/
+
+	.v-horizontallayout-margin-left, .v-verticallayout-margin-left, .v-layout.v-margin-left {
+		padding-left: 10px;
+	}
+	.v-horizontallayout-margin-bottom, .v-verticallayout-margin-bottom, .v-layout.v-margin-bottom {
+		padding-bottom: 10px;
+	}
+	.v-horizontallayout-margin-right, .v-verticallayout-margin-right, .v-layout.v-margin-right {
+		padding-right: 10px;
+	}
+	.v-horizontallayout-margin-top, .v-verticallayout-margin-top, .v-layout.v-margin-top {
+		padding-top: 10px;
+	}
+
+	//Needed to avoid comboBoxes being cut off at the bottom of the layout
+	.v-horizontallayout-filterPanelContent {
+		padding-bottom: 2px;
+	}
+
+	/*Breadcrumb menu*/
+	.v-horizontallayout-viewTitle {
+		padding-top: 5px;
+		padding-bottom: 5px;
+		background-color: #F3F3F3;
+		border-top: 1px solid #7d7e72;
+		border-bottom: 1px solid #7d7e72;
+		border-right: none;
+		border-left: none;
+		color: #616256;
+	}
+
+	.v-slot-viewTitleSeparator {
+		background-color: #7d7e72;
+	}
+
+	/* TODO: Set the optiongroup to horizontal view */
+	.v-select-optiongroup-orderLineFilterStatus .v-select-option {
+		display: inline-block !important;
+		padding-right: 10px !important;
+	}
+
+	/* Set the optiongroup to horizontal view */
+	.v-select-optiongroup-horizontal .v-select-option {
+		display: inline-block !important;
+		padding-right: 10px !important;
+	}
+
+	.v-label-progressBarLabel {
+		width: 100%;
+		height: 100%;
+		border: 1px solid #00cc00;
+	}
+
+	.rightAligned {
+		text-align: right;
+	}
+
+	.leftAligned {
+		text-align: left;
+	}
+
+	.v-caption-notificationPanel {
+		font-weight: bold;
+		font-size: 18px;
+		text-align: center;
+		line-height: 21px;
+		white-space: normal;
+	}
+
+	.v-horizontallayout-notificationPanel {
+		background-color: #FF3333;
+	}
+
+	.valo-menu {
+		//@include animation(valo-animate-in-slide-right 700ms 700ms backwards);
+
+		border-right: none;
+		color: #FFFFFF;
+
+		.badgewrapper {
+			position: relative;
+			padding: 0 !important;
+		}
+
+		.v-menubar-menuitem {
+	        color: white;
+        }
+
+		.v-ddwrapper {
+			display: block;
+		}
+	}
+
+	.v-menubar-user-menu:after {
+		display: none;
+	}
+
+	.v-menubar-user-menu > .v-menubar-menuitem {
+		display: block;
+		padding: 0;
+		max-width: 90%;
+		margin: 0 auto;
+
+		.v-menubar-menuitem-caption:after {
+			margin-right: -1em;
+		}
+
+		img.v-icon {
+			@if is-dark-color($valo-menu-background-color) {
+				border: none;
+			}
+		}
+	}
+
+	.valo-menu .valo-menu-badge,
+	.dashboard-view .notifications.unread .v-button-caption {
+		@include valo-badge-style;
+		position: absolute;
+		right: round($v-unit-size/3);
+		font-size: round($v-font-size * 0.9);
+		pointer-events: none;
+	}
+
+	.topPanel {
+		background-color: $valo-menu-background-color;
+	}
+
+	.v-label-versionLabel {
+		color: #9ca5af;
+		text-align: center;
+	}
+
+	.v-label-loginMessage {
+		color: red;
+	}
+
+	.v-button-topPanelTitleToggleButton {
+		color: #9ca5af;
+	}
+
+	.v-button-logout {
+		color: #9ca5af;
+	}
+
+	.v-button-logout:hover {
+		color: #9ca5af;
+		font-weight: bold;
+	}
+
+	.v-button:focus:after {
+		display: none !important;
+	}
+
+	.v-panel-content-topMenu {
+		overflow: hidden !important;
+	}
+
+	.ok{
+		color: green !important;
+	}
+	.notOk{
+		color: red !important;
+	}
+ }

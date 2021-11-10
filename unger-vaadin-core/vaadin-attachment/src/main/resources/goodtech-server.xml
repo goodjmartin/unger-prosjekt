@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	                       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:property-placeholder ignore-unresolvable="true" ignore-resource-not-found="true" system-properties-mode="OVERRIDE"
+								  location="classpath:/vaadin-attachment-default.properties" file-encoding="UTF-8"/>
+
+    <bean id="attachmentRepository" class="no.goodtech.vaadin.attachment.repository.AttachmentRepository"/>
+
+	<bean id="attachmentService" class="no.goodtech.vaadin.attachment.model.AttachmentService">
+        <constructor-arg name="loggingEnabled" value="${attachment.loggingEnabled}"/>
+	</bean>
+
+	<bean id="attachmentFactory" class="no.goodtech.vaadin.attachment.model.AttachmentFactory">
+		<constructor-arg name="directoryPath" value="${attachment.directoryPath}"/>
+		<constructor-arg name="attachmentService" ref="attachmentService"/>
+	</bean>
+
+</beans>

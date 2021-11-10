@@ -1,0 +1,10 @@
+@mixin vaadin-help {
+
+  .helptext .v-richtextarea {
+    border: none;
+  }
+
+  .helptext .v-readonly {
+    overflow: auto !important;
+  }
+}

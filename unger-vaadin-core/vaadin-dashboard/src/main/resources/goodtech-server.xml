@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	                       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:property-placeholder ignore-unresolvable="true" ignore-resource-not-found="true" system-properties-mode="OVERRIDE"
+								  location="classpath:/vaadin-dashboard-default.properties" file-encoding="UTF-8"/>
+
+	<bean id="fetcherConfigRepository" class="no.goodtech.dashboard.config.fetcher.FetcherConfigRepository"/>
+	<bean id="sqlFetcherConfigRepository" class="no.goodtech.dashboard.config.fetcher.SqlFetcherConfigRepository"/>
+	<bean id="simulatorFetcherConfigRepository" class="no.goodtech.dashboard.config.fetcher.SimulatorFetcherConfigRepository"/>
+	<bean id="dashboardConfigRepository" class="no.goodtech.dashboard.config.ui.DashboardConfigRepository"/>
+
+	<bean id="dashboardChangedAdaptor" class="no.goodtech.dashboard.DashboardChangedAdaptor"/>
+	<bean id="axisChangedAdaptor" class="no.goodtech.dashboard.AxisChangedAdaptor"/>
+
+	<bean id="dashboardSeriesManager" class="no.goodtech.dashboard.model.DashboardSeriesManager" autowire="constructor" depends-on="jdbcQueryExecutor,jpaQueryExecutorImpl">
+		<constructor-arg name="enabled" value="${dashboardSeriesManager.enabled}"/>
+		<constructor-arg name="cacheRetentionInterval" value="${dashboardSeriesManager.cacheRetentionInterval}"/>
+	</bean>
+
+	<bean id="vaadinDashboardGlobals" class="no.goodtech.dashboard.Globals" autowire="constructor">
+		  <constructor-arg name="seriesIdFilteringMode" value="${dashboard.config.series.id.filteringMode}"/>
+	</bean>
+</beans>

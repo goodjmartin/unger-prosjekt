@@ -1,0 +1,37 @@
+// Global variable overrides. Must be declared before importing Valo.
+@import '../valo/valo.scss';
+@import "vaadin-framework.scss";
+@import "vaadin-security.scss";
+@import "vaadin-frontpage.scss";
+@import "vaadin-help.scss";
+@import "vaadin-status-indicator.scss";
+@import "vaadin-report.scss";
+@import "vaadin-web.scss";
+
+
+@mixin admin {
+  @include valo;
+  @include vaadin-framework;
+  @include vaadin-security;
+  @include vaadin-frontpage;
+  @include vaadin-help;
+  @include vaadin-status-indicator;
+  @include vaadin-report;
+  @include vaadin-web;
+
+
+
+  .v-errorindicator {
+    // Only show validation errors using field styles
+    display: none;
+  }
+  .Vaadin-Icons {
+    // Make Vaadin Icons behave exactly like FontAwesome
+    font-style: normal;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: inline-block;
+    text-align: center;
+  }
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	                       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:property-placeholder ignore-unresolvable="true" ignore-resource-not-found="true" system-properties-mode="OVERRIDE"
+								  location="classpath:/vaadin-status-indicator-default.properties"
+								  file-encoding="UTF-8"/>
+
+	<bean id="statusLogEntryRepository" class="no.goodtech.vaadin.tabs.status.model.StatusLogEntryRepository"/>
+	<bean id="statusIndicatorRepository" class="no.goodtech.vaadin.tabs.status.model.StatusIndicatorRepository"/>
+	<bean id="statusIndicatorSubscriptionRepository" class="no.goodtech.vaadin.tabs.status.model.StatusIndicatorSubscriptionRepository"/>
+	<bean id="statusLoggerRepository" class="no.goodtech.vaadin.tabs.status.common.StatusLoggerRepository"/>
+
+	<bean id="statusIndicatorSubscriptionScheduler" class="no.goodtech.vaadin.tabs.status.common.StatusIndicatorSubscriptionScheduler" init-method="refresh">
+		<constructor-arg name="mailSender" ref="mailSender"/>
+		<constructor-arg name="url" value="${statusIndicator.mail.url}"/>
+		<constructor-arg name="from" value="${statusIndicator.mail.from}"/>
+		<constructor-arg name="disabled" value="${statusIndicator.mail.disabled}"/>
+	</bean>
+
+	<!-- Initiate the Globals bean -->
+	<bean id="vaadinStatusIndicatorGlobals" class="no.goodtech.vaadin.tabs.status.Globals" autowire="constructor"/>
+
+	<!-- Automatic purging of status log -->
+	<bean id="statusLogEntryPurger" class="no.goodtech.vaadin.tabs.status.DatabaseRowPurger" autowire="constructor">
+		<constructor-arg name="tableName" value="StatusLogEntry"/>
+		<constructor-arg name="timestampColumnName" value="created"/>
+		<constructor-arg name="numDaysToKeep" value="${statusIndicator.purger.numDaysToKeep}"/>
+		<constructor-arg name="statusLoggerId" value="${statusIndicator.purger.statusLoggerId}"/>
+		<constructor-arg name="dataSource" ref="dataSource"/>
+	</bean>
+	<bean id="scheduledTask.plcLogValuePurger" class="no.cronus.common.scheduler.FixedDelayScheduler" destroy-method="destroy">
+		<constructor-arg name="name" value="StatusLogEntryPurger"/>
+		<constructor-arg name="initialDelay" value="${statusIndicator.scheduledTask.purger.initialDelay}"/>
+		<constructor-arg name="delay" value="${statusIndicator.scheduledTask.purger.delay}"/>
+		<constructor-arg name="disabled" value="${statusIndicator.scheduledTask.purger.disabled}"/>
+		<constructor-arg name="timeout" value="${statusIndicator.scheduledTask.purger.timeout}"/>
+		<constructor-arg name="scheduledTask" ref="statusLogEntryPurger"/>
+		<constructor-arg name="maxRetryCount" value="${statusIndicator.scheduledTask.purger.maxRetryCount}"/>
+	</bean>
+
+</beans>

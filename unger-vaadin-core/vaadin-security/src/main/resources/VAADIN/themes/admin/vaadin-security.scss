@@ -1,0 +1,20 @@
+@mixin vaadin-security {
+
+	.v-slot-menuPanel {
+		background-color: white !important;
+		padding-right: 20px !important;
+	}
+
+	.v-label-applicationTitle {
+		font-weight: bold;
+		font-size: 26px;
+		text-align: left;
+		line-height: 29px;
+	}
+
+	//This disables the loading indicator(spinning wheel) for the topMenu tabSheet
+	.v-panel-content-topMenu > .v-tabsheet-loading > .v-tabsheet-deco {
+		display: none;
+	}
+
+}

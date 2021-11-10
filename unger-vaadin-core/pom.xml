@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>no.goodtech</groupId>
+		<artifactId>super-pom</artifactId>
+		<version>2.58</version>
+		<relativePath />
+	</parent>
+
+	<groupId>no.goodtech.vaadin</groupId>
+	<artifactId>vaadin-core-parent</artifactId>
+	<version>1.427.1.1-SNAPSHOT</version>
+
+	<name>Vaadin Core Parent</name>
+	<description>Vaadin Core Parent</description>
+
+	<packaging>pom</packaging>
+
+	<properties>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+		<hsqldb.version>2.4.0</hsqldb.version>
+		<joda-time.version>2.9.9</joda-time.version>
+		<utils.version>1.138</utils.version>
+		<vaadin-plugins.version>1.75</vaadin-plugins.version>
+		<persistence-core.version>1.139</persistence-core.version>
+		<poi.version>3.17</poi.version>
+		<opc-utils.version>1.63</opc-utils.version>
+		<el-impl.version>2.2</el-impl.version>
+		<influxdb-java.version>2.11</influxdb-java.version>
+        <vaadin-testbench.version>5.1.1</vaadin-testbench.version>
+	</properties>
+
+
+	<modules>
+		<module>vaadin-framework</module>
+		<module>vaadin-frontpage</module>
+		<module>vaadin-help</module>
+		<module>vaadin-status-indicator</module>
+		<module>vaadin-report</module>
+		<module>vaadin-security</module>
+		<module>vaadin-properties</module>
+		<module>vaadin-category</module>
+		<module>vaadin-dashboard</module>
+		<module>vaadin-remotecontrol</module>
+		<module>vaadin-web</module>
+		<module>vaadin-event</module>
+		<module>vaadin-attachment</module>
+		<!--
+		TODO: Remove this module from Subversion also
+				<module>vaadin-standalone</module>
+		-->
+	</modules>
+
+	<scm>
+		<connection>scm:git:ssh://git@github.com/goodtechdevelopment/unger-vaadin-core.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/goodtechdevelopment/unger-vaadin-core.git</developerConnection>
+	</scm>
+
+</project>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topMenuLayout xmlns="urn:goodtech:xml:ns:topMenuLayout">
+
+	<topMenuGroups>
+		<topMenuGroup id="P-Anlegg">
+			<view id="UserTab"/>
+			<view id="BreadCrumbView1"/>
+		</topMenuGroup>
+
+		<topMenuGroup id="S-Anlegg">
+			<view id="UserTab" parameter="user=piba"/>
+			<view id="StatusTab"/>
+		</topMenuGroup>
+
+		<topMenuGroup id="T-Anlegg">
+			<view id="UserTab"/>
+		</topMenuGroup>
+
+		<topMenuGroup id="N-Anlegg">
+			<view id="UserTab" parameter="user=piba"/>
+			<view id="StatusTab"/>
+		</topMenuGroup>
+	</topMenuGroups>
+
+</topMenuLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout-definition xmlns="urn:goodtech:xml:ns:layoutDefinition">
+
+	<menu defaultViewId="FrontPageView">
+        <menuItem viewId="FrontPageView" icon="STAR"/>
+		<menuItem name="Live-dashboard" viewId="DashboardView" parameters="id=DASH1" icon="LINE_CHART"/>
+		<menuItem viewId="DashboardAdminView" icon="LINE_CHART"/>
+		<menuItem viewId="AttachmentDisplayPanel"/>
+		<group name="Arbeidsstasjoner">
+			<menuItem name="P-Anlegg" viewId="TopMenuView" parameters="topMenuId=P-Anlegg"/>
+			<menuItem name="S-Anlegg" viewId="TopMenuView" parameters="topMenuId=S-Anlegg"/>
+			<menuItem name="T-Anlegg" viewId="TopMenuView" parameters="topMenuId=T-Anlegg"/>
+			<menuItem name="N-Anlegg" viewId="TopMenuView" parameters="topMenuId=N-Anlegg"/>
+		</group>
+<!--
+		<group name="ConfigurableTabSheetTest" icon="FILM">
+			<menuItem name="Group1" viewId="ConfigurableTabSheetLayoutView" parameters="tabGroupId=group1"/>
+			<menuItem name="Group2" viewId="ConfigurableTabSheetLayoutView" parameters="tabGroupId=group2"/>
+			<menuItem name="All" viewId="ConfigurableTabSheetLayoutView" parameters="tabGroupId=all"/>
+		</group>
+-->
+        <group name="Rapporter" icon="FILM" expand="true">
+			<menuItem name="Access Role Report" viewId="ReportTab" parameters="report=accessRoles"/>
+			<menuItem name="Queue Report" viewId="ReportTab" parameters="report=queueReport"/>
+			<menuItem name="Kø: Stopptider siste 3 mnd" viewId="ReportTab" parameters="report=queueReport/fromDate=-129600/queue=IMPORT: STOPPTIDER"/>
+			<menuItem name="Innlogget bruker" viewId="ReportTab" parameters="report=myUser/run=true"/>
+			<menuItem name="Søk i brukerdata" viewId="ReportTab" parameters="report=userSearch"/>
+			<menuItem name="Brukerdata grafisk" viewId="ReportTab" parameters="report=userGraphical"/>
+			<menuItem name="Brukerdata grafisk2" viewId="ReportTab" parameters="report=userGraphicalTitle/loginFailures=0"/>
+			<menuItem name="Kategorier" viewId="ReportTab" parameters="report=categories"/>
+        </group>
+		<group name="System" icon="VIDEO_CAMERA">
+            <menuItem viewId="HelpTextView"/>
+			<menuItem viewId="StatusTab"/>
+			<menuItem viewId="MailPanel"/>
+			<menuItem viewId="PersonalUserTab"/>
+			<menuItem viewId="ThemeView"/>
+			<menuItem viewId="UserTab"/>
+			<menuItem viewId="AccessRoleTab"/>
+			<menuItem viewId="NotificationCreatePanel"/>
+			<menuItem viewId="CategoryAdminPanel"/>
+			<menuItem viewId="PropertyAdminPanel"/>
+			<menuItem viewId="PropertyMembershipAdminPanel"/>
+		</group>
+		<menuItem viewId="BreadCrumbView1"/>
+    </menu>
+
+</layout-definition>

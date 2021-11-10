@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reports xmlns="urn:goodtech:xml:ns:report">
+
+	<report id="report_1" name="Report_1" description="Description_1">
+		<columns>
+			<column name="Column_1_1" type="java.util.Date" format="Some format"/>
+			<column name="Column_1_2" type="java.lang.Integer" format="Another format"/>
+		</columns>
+		<dataSetFetcher type="sql">
+			<query>select * from Test_1</query>
+			<parameters>
+				<textFieldParameter label="TextField_1" />
+				<dateParameter label="Date_1" />
+				<nativeSelectParameter label="NativeSelect_1" >
+					<list>
+						<element key="Key_1_1" value="Value_1_1"/>
+						<element key="Key_1_2" value="Value_1_2"/>
+					</list>
+				</nativeSelectParameter>
+			</parameters>
+		</dataSetFetcher>
+	</report>
+
+	<report id="report_2" name="Report_2" description="Description_2">
+		<columns>
+			<column name="Column_2_1"/>
+			<column name="Column_2_2"/>
+		</columns>
+		<dataSetFetcher type="sql">
+			<query>select * from Test_2</query>
+			<parameters>
+				<textFieldParameter label="TextField_2" />
+				<dateParameter label="Date_2" />
+				<nativeSelectParameter label="NativeSelect_2" >
+					<list>
+						<element key="Key_2_1" value="Value_2_1"/>
+						<element key="Key_2_2" value="Value_2_2"/>
+					</list>
+				</nativeSelectParameter>
+			</parameters>
+		</dataSetFetcher>
+	</report>
+
+</reports>

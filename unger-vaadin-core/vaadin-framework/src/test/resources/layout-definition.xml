@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout-definition xmlns="urn:goodtech:xml:ns:layoutDefinition">
+
+	<menu defaultViewId="UserTab">
+		<group name="Rapporter" icon="FILM" expand="false">
+			<menuItem name="Access Role Report" viewId="reportView" parameters="report=accessRoles" icon="VOLUME_UP"/>
+			<menuItem name="Queue Report" viewId="reportView" parameters="report=queueReport" icon="VOLUME_DOWN"/>
+		</group>
+		<menuItem name="NavigatorTest" viewId="breadCrumbView" index="1" icon="HEART"/>
+	</menu>
+
+</layout-definition>

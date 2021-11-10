@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="eventRepository" class="no.goodtech.vaadin.event.repository.EventRepository"/>
+    <bean id="eventTypeRepository" class="no.goodtech.vaadin.event.repository.EventTypeRepository"/>
+
+	<bean id="eventService" class="no.goodtech.vaadin.event.model.EventService"/>
+
+	<bean id="eventFactory" class="no.goodtech.vaadin.event.model.EventFactory">
+		<constructor-arg name="eventService" ref="eventService"/>
+	</bean>
+
+</beans>

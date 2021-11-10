@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
+		 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+		 id="WebApp_ID" version="2.5">
+
+	<display-name>Vaadin Web Application</display-name>
+
+	<context-param>
+		<description>Vaadin production mode</description>
+		<param-name>productionMode</param-name>
+        <param-value>false</param-value>
+	</context-param>
+
+	<!-- Spring bootstrap -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:vaadin-web-server.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+
+	<session-config>
+		<session-timeout>1</session-timeout>
+	</session-config>
+
+    <!--<servlet>-->
+    <!--<servlet-name>Dashboard Application</servlet-name>-->
+    <!--<servlet-class>no.goodtech.dashboard.DashboardServlet</servlet-class>-->
+    <!--&lt;!&ndash;<init-param>&ndash;&gt;-->
+    <!--&lt;!&ndash;<param-name>widgetset</param-name>&ndash;&gt;-->
+    <!--&lt;!&ndash;<param-value>vaadinWidgetSet</param-value>&ndash;&gt;-->
+    <!--&lt;!&ndash;</init-param>&ndash;&gt;-->
+    <!--<init-param>-->
+    <!--<description>Vaadin application class to start</description>-->
+    <!--<param-name>UI</param-name>-->
+    <!--<param-value>no.goodtech.dashboard.ui.DashboardPanel</param-value>-->
+    <!--</init-param>-->
+    <!--</servlet>-->
+
+    <!--<servlet>-->
+    <!--<servlet-name>Main Application</servlet-name>-->
+    <!--<servlet-class>com.vaadin.spring.server.SpringVaadinServlet</servlet-class>-->
+    <!--&lt;!&ndash;<init-param>&ndash;&gt;-->
+    <!--&lt;!&ndash;<param-name>widgetset</param-name>&ndash;&gt;-->
+    <!--&lt;!&ndash;<param-value>vaadinWidgetSet</param-value>&ndash;&gt;-->
+    <!--&lt;!&ndash;</init-param>&ndash;&gt;-->
+    <!--&lt;!&ndash;<init-param>&ndash;&gt;-->
+    <!--&lt;!&ndash;<param-name>widgetset</param-name>&ndash;&gt;-->
+    <!--&lt;!&ndash;<param-value>com.vaadin.v7.Vaadin7WidgetSet</param-value>&ndash;&gt;-->
+    <!--&lt;!&ndash;</init-param>&ndash;&gt;-->
+
+    <!--<init-param>-->
+    <!--<param-name>pushmode</param-name>-->
+    <!--<param-value>automatic</param-value>-->
+    <!--</init-param>-->
+    <!--<async-supported>true</async-supported>-->
+    <!--<init-param>-->
+    <!--<param-name>heartbeatInterval</param-name>-->
+    <!--<param-value>15</param-value>-->
+    <!--</init-param>-->
+    <!--</servlet>-->
+
+    <!--<servlet>-->
+    <!--<servlet-name>Touchkit Servlet</servlet-name>-->
+    <!--<servlet-class>com.vaadin.addon.touchkit.server.TouchKitServlet </servlet-class>-->
+    <!--<init-param>-->
+    <!--<param-name>widgetset</param-name>-->
+    <!--<param-value>touchKitWidgetSet</param-value>-->
+    <!--</init-param>-->
+    <!--<init-param>-->
+    <!--<description>Vaadin touchkit UI class to start</description>-->
+    <!--<param-name>ui</param-name>-->
+    <!--<param-value>no.goodtech.vaadin.remotecontrol.gui.TouchKitMain</param-value>-->
+    <!--</init-param>-->
+    <!--</servlet>-->
+
+	<servlet>
+		<servlet-name>push-demo</servlet-name>
+		<servlet-class>com.vaadin.server.VaadinServlet</servlet-class>
+        <!--<init-param>-->
+        <!--<param-name>widgetset</param-name>-->
+        <!--<param-value>vaadinWidgetSet</param-value>-->
+        <!--</init-param>-->
+		<init-param>
+			<description>Vaadin application class to start</description>
+			<param-name>UI</param-name>
+			<param-value>no.goodtech.vaadin.push.PushTestUi</param-value>
+		</init-param>
+	</servlet>
+
+    <!--<servlet-mapping>-->
+    <!--<servlet-name>Touchkit Servlet</servlet-name>-->
+    <!--<url-pattern>/touchkit/*</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+	<servlet-mapping>
+		<servlet-name>Dashboard Application</servlet-name>
+		<url-pattern>/dashboard/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>Main Application</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>push-demo</servlet-name>
+		<url-pattern>/push/*</url-pattern>
+	</servlet-mapping>
+
+</web-app>

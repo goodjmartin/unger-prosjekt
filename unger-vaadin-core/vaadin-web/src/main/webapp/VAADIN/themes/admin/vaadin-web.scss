@@ -1,0 +1,31 @@
+// Add project specific (or last minute) styling below
+@mixin vaadin-web {
+
+	.blueCaptionPanel .v-panel-caption {
+		color: #197de1 !important;
+	}
+
+	.materialLotFieldComponent {
+		margin: 5px;
+	}
+
+	.v-table-cell-content-red {
+         background: #FF0000;
+     }
+
+	.commentTable {
+		.v-table-caption-container {
+			//Caption for the rightmost column gets cut off/hidden behind the table resizer without this applied
+			overflow: visible;
+		}
+		.v-table-cell-wrapper {
+		    white-space: normal;
+		    overflow: hidden;
+		}
+        .v-table-cell-content {
+            vertical-align: top;
+	        padding: 5 10px;
+        }
+	}
+
+}

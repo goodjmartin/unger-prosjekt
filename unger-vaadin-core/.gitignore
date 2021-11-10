@@ -1,0 +1,228 @@
+
+# /
+/*.project
+/*.settings
+/*.ipr
+/*.iws
+/*.iml
+/*.log
+/target
+/.idea
+
+# /vaadin-attachment/
+/vaadin-attachment/*.ipr
+/vaadin-attachment/*.iws
+/vaadin-attachment/*.iml
+/vaadin-attachment/*.log
+/vaadin-attachment/target
+/vaadin-attachment/.settings
+/vaadin-attachment/*.classpath
+/vaadin-attachment/*.project
+
+# /vaadin-category/
+/vaadin-category/*.ipr
+/vaadin-category/*.iws
+/vaadin-category/*.iml
+/vaadin-category/*.log
+/vaadin-category/target
+/vaadin-category/*.settings
+/vaadin-category/*.classpath
+/vaadin-category/*.project
+
+# /vaadin-dashboard/
+/vaadin-dashboard/*.ipr
+/vaadin-dashboard/*.iws
+/vaadin-dashboard/*.iml
+/vaadin-dashboard/*.log
+/vaadin-dashboard/target
+/vaadin-dashboard/*.settings
+/vaadin-dashboard/*.classpath
+/vaadin-dashboard/*.project
+/vaadin-dashboard/.idea
+
+# /vaadin-event/
+/vaadin-event/*.ipr
+/vaadin-event/*.iws
+/vaadin-event/*.iml
+/vaadin-event/*.log
+/vaadin-event/target
+/vaadin-event/.settings
+/vaadin-event/*.classpath
+/vaadin-event/*.project
+
+# /vaadin-framework/
+/vaadin-framework/*.ipr
+/vaadin-framework/*.iws
+/vaadin-framework/*.iml
+/vaadin-framework/*.log
+/vaadin-framework/target
+/vaadin-framework/.settings
+/vaadin-framework/*.classpath
+/vaadin-framework/*.project
+
+# /vaadin-frontpage/
+/vaadin-frontpage/*.ipr
+/vaadin-frontpage/*.iws
+/vaadin-frontpage/*.iml
+/vaadin-frontpage/*.log
+/vaadin-frontpage/target
+/vaadin-frontpage/.settings
+/vaadin-frontpage/*.classpath
+/vaadin-frontpage/*.project
+
+# /vaadin-frontpage/src/
+/vaadin-frontpage/src/*.ipr
+/vaadin-frontpage/src/*.iws
+/vaadin-frontpage/src/*.iml
+/vaadin-frontpage/src/*.log
+/vaadin-frontpage/src/target
+/vaadin-frontpage/src/.settings
+/vaadin-frontpage/src/*.classpath
+/vaadin-frontpage/src/*.project
+
+# /vaadin-frontpage/src/database/
+/vaadin-frontpage/src/database/*.ipr
+/vaadin-frontpage/src/database/*.iws
+/vaadin-frontpage/src/database/*.iml
+/vaadin-frontpage/src/database/*.log
+/vaadin-frontpage/src/database/target
+/vaadin-frontpage/src/database/.settings
+/vaadin-frontpage/src/database/*.classpath
+/vaadin-frontpage/src/database/*.project
+
+# /vaadin-frontpage/src/main/
+/vaadin-frontpage/src/main/*.ipr
+/vaadin-frontpage/src/main/*.iws
+/vaadin-frontpage/src/main/*.iml
+/vaadin-frontpage/src/main/*.log
+/vaadin-frontpage/src/main/target
+/vaadin-frontpage/src/main/.settings
+/vaadin-frontpage/src/main/*.classpath
+/vaadin-frontpage/src/main/*.project
+
+# /vaadin-frontpage/src/main/java/
+/vaadin-frontpage/src/main/java/*.ipr
+/vaadin-frontpage/src/main/java/*.iws
+/vaadin-frontpage/src/main/java/*.iml
+/vaadin-frontpage/src/main/java/*.log
+/vaadin-frontpage/src/main/java/target
+/vaadin-frontpage/src/main/java/.settings
+/vaadin-frontpage/src/main/java/*.classpath
+/vaadin-frontpage/src/main/java/*.project
+
+# /vaadin-frontpage/src/main/resources/
+/vaadin-frontpage/src/main/resources/*.ipr
+/vaadin-frontpage/src/main/resources/*.iws
+/vaadin-frontpage/src/main/resources/*.iml
+/vaadin-frontpage/src/main/resources/*.log
+/vaadin-frontpage/src/main/resources/target
+/vaadin-frontpage/src/main/resources/.settings
+/vaadin-frontpage/src/main/resources/*.classpath
+/vaadin-frontpage/src/main/resources/*.project
+
+# /vaadin-frontpage/src/test/
+/vaadin-frontpage/src/test/*.ipr
+/vaadin-frontpage/src/test/*.iws
+/vaadin-frontpage/src/test/*.iml
+/vaadin-frontpage/src/test/*.log
+/vaadin-frontpage/src/test/target
+/vaadin-frontpage/src/test/.settings
+/vaadin-frontpage/src/test/*.classpath
+/vaadin-frontpage/src/test/*.project
+
+# /vaadin-frontpage/src/test/java/
+/vaadin-frontpage/src/test/java/*.ipr
+/vaadin-frontpage/src/test/java/*.iws
+/vaadin-frontpage/src/test/java/*.iml
+/vaadin-frontpage/src/test/java/*.log
+/vaadin-frontpage/src/test/java/target
+/vaadin-frontpage/src/test/java/.settings
+/vaadin-frontpage/src/test/java/*.classpath
+/vaadin-frontpage/src/test/java/*.project
+
+# /vaadin-frontpage/src/test/resources/
+/vaadin-frontpage/src/test/resources/*.ipr
+/vaadin-frontpage/src/test/resources/*.iws
+/vaadin-frontpage/src/test/resources/*.iml
+/vaadin-frontpage/src/test/resources/*.log
+/vaadin-frontpage/src/test/resources/target
+/vaadin-frontpage/src/test/resources/.settings
+/vaadin-frontpage/src/test/resources/*.classpath
+/vaadin-frontpage/src/test/resources/*.project
+
+# /vaadin-help/
+/vaadin-help/.project
+/vaadin-help/.settings
+/vaadin-help/.classpath
+/vaadin-help/target
+/vaadin-help/.log4j.properties
+/vaadin-help/mes.properties
+/vaadin-help/*.iml
+
+# /vaadin-properties/
+/vaadin-properties/*.iws
+/vaadin-properties/*.iml
+/vaadin-properties/*.log
+/vaadin-properties/target
+/vaadin-properties/.*
+
+# /vaadin-remotecontrol/
+/vaadin-remotecontrol/target
+/vaadin-remotecontrol/.settings
+/vaadin-remotecontrol/.classpath
+/vaadin-remotecontrol/.project
+/vaadin-remotecontrol/*.iml
+
+# /vaadin-report/
+/vaadin-report/*.iws
+/vaadin-report/*.iml
+/vaadin-report/*.log
+/vaadin-report/target
+/vaadin-report/.*
+
+# /vaadin-security/
+/vaadin-security/*.ipr
+/vaadin-security/*.iws
+/vaadin-security/*.iml
+/vaadin-security/*.log
+/vaadin-security/target
+/vaadin-security/.settings
+/vaadin-security/*.classpath
+/vaadin-security/*.project
+
+# /vaadin-standalone/
+/vaadin-standalone/*.iws
+/vaadin-standalone/*.iml
+/vaadin-standalone/*.log
+/vaadin-standalone/target
+/vaadin-standalone/.classpath
+/vaadin-standalone/.project
+/vaadin-standalone/.settings
+/vaadin-standalone/bin
+
+# /vaadin-status-indicator/
+/vaadin-status-indicator/*.iws
+/vaadin-status-indicator/*.iml
+/vaadin-status-indicator/*.log
+/vaadin-status-indicator/target
+/vaadin-status-indicator/.*
+
+# /vaadin-web/
+/vaadin-web/*.ipr
+/vaadin-web/*.iws
+/vaadin-web/*.iml
+/vaadin-web/*.log
+/vaadin-web/target
+/vaadin-web/*.settings
+/vaadin-web/*.classpath
+/vaadin-web/*.project
+/vaadin-web/mes.properties
+/vaadin-web/addons.scss
+/vaadin-web/styles.css
+/vaadin-web/bin
+/vaadin-web/log4j.properties
+/vaadin-web/application-default.properties
+
+# /vaadin-web/src/main/webapp/VAADIN/themes/admin/
+/vaadin-web/src/main/webapp/VAADIN/themes/admin/addons.scss
+/vaadin-web/src/main/webapp/VAADIN/themes/admin/styles.css

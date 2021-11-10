@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+	                       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<context:property-placeholder ignore-unresolvable="true" ignore-resource-not-found="true" system-properties-mode="OVERRIDE"
+                                  location="classpath:/vaadin-remotecontrol-default.properties" file-encoding="UTF-8"/>
+
+	<bean name="mes.remotecontrol.widget.example.numeric.readonly" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[GenericSimulator]_Meta:Writeable/WriteableShort1"/>
+		<property name="caption" value="Tall-felt"/>
+		<property name="dataType" value="java.lang.Short"/>
+		<property name="column" value="Kun visning"/>
+	</bean>
+
+	<bean name="mes.remotecontrol.widget.example.numeric.writable" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[GenericSimulator]_Meta:Writeable/WriteableShort1"/>
+		<property name="caption" value="Tall-felt"/>
+		<property name="dataType" value="java.lang.Short"/>
+		<property name="readOnly" value="false"/>
+		<property name="column" value="Kan endres"/>
+	</bean>
+
+	<bean name="mes.remotecontrol.widget.example.switch.readonly" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[GenericSimulator]_Meta:Writeable/WriteableBoolean1"/>
+		<property name="caption" value="Av/på-bryter"/>
+		<property name="dataType" value="java.lang.Boolean"/>
+		<property name="column" value="Kun visning"/>
+	</bean>
+
+	<bean name="mes.remotecontrol.widget.example.switch.writable" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[GenericSimulator]_Meta:Writeable/WriteableBoolean1"/>
+		<property name="caption" value="Av/på-bryter"/>
+		<property name="dataType" value="java.lang.Boolean"/>
+		<property name="readOnly" value="false"/>
+		<property name="column" value="Kan endres"/>
+	</bean>
+
+	<bean name="mes.remotecontrol.widget.example.choice.writable" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[GenericSimulator]_Meta:Writeable/WriteableShort2"/>
+		<property name="caption" value="Valgliste"/>
+		<property name="dataType" value="java.lang.Short"/>
+		<property name="readOnly" value="false"/>
+		<property name="column" value="Kan endres"/>
+		<property name="options">
+			<list>
+				<value>0</value>
+				<value>300</value>
+				<value>500</value>
+				<value>700</value>
+				<value>900</value>
+				<value>2000</value>
+				<value>30000</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean name="mes.remotecontrol.widget.example.choice.readonly" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[GenericSimulator]_Meta:Writeable/WriteableShort2"/>
+		<property name="caption" value="Valgliste"/>
+		<property name="dataType" value="java.lang.Short"/>
+		<property name="column" value="Kun visning"/>
+	</bean>
+
+	<bean name="mes.remotecontrol.widget.l1.c1.slurry.oil" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:I1/I1:0"/>
+		<property name="caption" value="Olje i pigment-slurry"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c2.slurry.oil" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:N7/N7:0"/>
+		<property name="caption" value="Olje i pigment-slurry"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c1.biolip.oil" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:I1/I1:1"/>
+		<property name="caption" value="Olje i biolip"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="readOnly" value="false"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c2.biolip.oil" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:N7/N7:1"/>
+		<property name="caption" value="Olje i biolip"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="readOnly" value="false"/>
+		<property name="column" value="Coater 2"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c1.ferdigvare.fett" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:I1/I1:2"/>
+		<property name="caption" value="Fett i ferdigvare"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c2.ferdigvare.fett" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:N7/N7:2"/>
+		<property name="caption" value="Fett i ferdigvare"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c1.ferdigvare.protein" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:I1/I1:3"/>
+		<property name="caption" value="Protein i ferdigvare"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c2.ferdigvare.protein" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:N7/N7:3"/>
+		<property name="caption" value="Protein i ferdigvare"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c1.ferdigvare.vann" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:I1/I1:4"/>
+		<property name="caption" value="Vann i ferdigvare"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c2.ferdigvare.vann" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:N7/N7:4"/>
+		<property name="caption" value="Vann i ferdigvare"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c1.extruder.fett" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:I1/I1:5"/>
+		<property name="caption" value="Fettinnh. før coater"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="readOnly" value="false"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c2.extruder.fett" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:N7/N7:5"/>
+		<property name="caption" value="Fettinnh. før coater"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="readOnly" value="false"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c1.biolip.skal" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:I1/I1:6"/>
+		<property name="caption" value="Skalverdi biolip"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="readOnly" value="false"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c2.biolip.skal" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:N7/N7:6"/>
+		<property name="caption" value="Skalverdi biolip"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="readOnly" value="false"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c1.batch.size" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:I1/I1:7"/>
+		<property name="caption" value="Batch-størrelse"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="readOnly" value="false"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+	<bean name="mes.remotecontrol.widget.l1.c2.batch.size" class="no.goodtech.vaadin.remotecontrol.metamodel.Widget">
+		<property name="tag" value="[SLC Simulator Device]_Meta:N7/N7:7"/>
+		<property name="caption" value="Batch-størrelse"/>
+		<property name="dataType" value="java.lang.Integer"/>
+		<property name="readOnly" value="false"/>
+		<property name="column" value="Coater 1"/>
+	</bean>
+
+	<bean name="mes.screen.example" class="no.goodtech.vaadin.remotecontrol.metamodel.Screen">
+		<property name="title" value="Demo av forskjellige komponenter"/>
+		<property name="widgets">
+			<list>
+				<ref bean="mes.remotecontrol.widget.example.numeric.writable"/>
+				<ref bean="mes.remotecontrol.widget.example.switch.writable"/>
+				<ref bean="mes.remotecontrol.widget.example.choice.writable"/>
+				<ref bean="mes.remotecontrol.widget.example.numeric.readonly"/>
+				<ref bean="mes.remotecontrol.widget.example.switch.readonly"/>
+				<ref bean="mes.remotecontrol.widget.example.choice.readonly"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean name="mes.screen.coater.l1" class="no.goodtech.vaadin.remotecontrol.metamodel.Screen">
+		<property name="title" value="Coater1+2@linje1"/>
+		<property name="widgets">
+			<list>
+				<ref bean="mes.remotecontrol.widget.l1.c1.slurry.oil"/>
+				<ref bean="mes.remotecontrol.widget.l1.c1.biolip.oil"/>
+				<ref bean="mes.remotecontrol.widget.l1.c1.ferdigvare.fett"/>
+				<ref bean="mes.remotecontrol.widget.l1.c1.ferdigvare.protein"/>
+				<ref bean="mes.remotecontrol.widget.l1.c1.ferdigvare.vann"/>
+				<ref bean="mes.remotecontrol.widget.l1.c1.extruder.fett"/>
+				<ref bean="mes.remotecontrol.widget.l1.c1.biolip.skal"/>
+				<ref bean="mes.remotecontrol.widget.l1.c1.batch.size"/>
+				<ref bean="mes.remotecontrol.widget.l1.c2.slurry.oil"/>
+				<ref bean="mes.remotecontrol.widget.l1.c2.biolip.oil"/>
+				<ref bean="mes.remotecontrol.widget.l1.c2.ferdigvare.fett"/>
+				<ref bean="mes.remotecontrol.widget.l1.c2.ferdigvare.protein"/>
+				<ref bean="mes.remotecontrol.widget.l1.c2.ferdigvare.vann"/>
+				<ref bean="mes.remotecontrol.widget.l1.c2.extruder.fett"/>
+				<ref bean="mes.remotecontrol.widget.l1.c2.biolip.skal"/>
+				<ref bean="mes.remotecontrol.widget.l1.c2.batch.size"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean name="menu" class="no.goodtech.vaadin.remotecontrol.metamodel.Menu">
+		<property name="menuItems">
+			<list>
+				<ref bean="mes.screen.coater.l1"/>
+				<ref bean="mes.screen.example"/>
+			</list>
+		</property>
+	</bean>
+
+</beans>

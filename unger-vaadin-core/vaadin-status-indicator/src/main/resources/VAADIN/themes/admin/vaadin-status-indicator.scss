@@ -1,0 +1,21 @@
+@mixin vaadin-status-indicator {
+
+	/* tabellceller for status-indikatorer */
+	.v-table-cell-content-statusIndicator-SUCCESS {
+		color: black !important;
+		background: lime !important; /* for IE8, som ikke skjønner rgba */
+		background: rgba(0,255,0, 0.3) !important;
+	}
+	/* tabellceller for status-indikatorer */
+	.v-table-cell-content-statusIndicator-WARNING {
+		color: black !important;
+		background: yellow !important; /* for IE8, som ikke skjønner rgba */
+		background: rgba(255,255,0, 0.2) !important;
+	}
+	.v-table-cell-content-statusIndicator-FAILURE {
+		color: black !important;
+		background: red !important; /* for IE8, som ikke skjønner rgba */
+		background: rgba(255,0,0, 0.3) !important;
+	}
+
+}

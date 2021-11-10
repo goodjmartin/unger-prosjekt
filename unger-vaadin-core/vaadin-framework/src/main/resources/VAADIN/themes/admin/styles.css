@@ -1,0 +1,56 @@
+@import url(vaadin-core-styles.css);
+
+/*padding til venstre for accordion menyer*/
+.v-accordion-item-content{
+    padding-left: 10px;
+}
+
+.v-caption-statusStartDate {
+    font-weight: bold;
+}
+
+.v-caption-statusEndDate {
+    font-weight: bold;
+}
+
+.v-caption-statusSearch {
+    font-weight: bold;
+}
+
+.v-caption-statusMaxRows {
+    font-weight: bold;
+}
+
+/* Bilde som vises hvis noe har gått galt */
+.v-table-cell-content-failure {
+    color: red;
+    background-image: url("images/feilprod.png");
+    background-repeat: no-repeat;
+    background-position: 5px;
+    text-indent: 20px;
+}
+
+.v-button-removeButton {
+	color: red;
+}
+
+.v-button-okButton,
+.v-button-addButton,
+.v-button-activeButton,
+.v-button-refreshButton {
+	color: green;
+}
+
+.v-button-cancelButton,
+.v-button-resetButton,
+.v-button-saveButton,
+.v-button-downloadButton,
+.v-button-backButton {
+	color: blue;
+}
+
+.v-button-copyButton,
+.v-button-detailButton,
+.v-button-editButton {
+	color: yellow;
+}
