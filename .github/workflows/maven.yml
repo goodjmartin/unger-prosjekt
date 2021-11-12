@@ -25,4 +25,4 @@ jobs:
     - name: Build with Maven
       #run: mvn -B package --file pom.xml
       #run: mvn clean install -e -DskipTests
-      run: cd unger-vaadin-core;echo "hello";echo "test1";pwd;echo "test2";dir ../;echo "hvordan gikk det?";echo "test3";ls ~/.m2/;echo "test3"; echo "heisann" >> hoho;ls;echo "gikk det?";less hoho;pwd ~/.m2/; 
+      run: cd unger-vaadin-core;echo "hello";echo "test1";pwd;echo "test2";dir ../;echo "hvordan gikk det?";echo "test3";ls ~/.m2/;echo "test3"; echo "heisann" >> hoho;ls;echo "gikk det?";less hoho;ls -la ~/.m2/;echo "hvor mye?"; 
